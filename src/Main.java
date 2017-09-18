@@ -2,10 +2,13 @@
  * Created by daxxon on 9/13/17.
  */
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
+// import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Scanner;
 import java.io.File;
+
+import static java.lang.String.valueOf;
+// import java.io.FileWriter;
+// import java.io.IOException;
 
 public class Main {
 
@@ -14,37 +17,32 @@ public class Main {
 
   public static void main(String[] args) {
 
-    VehicleInfo danielGolf = new VehicleInfo();
+    VehicleInfo vehicle = new VehicleInfo();
 
     System.out.print("Enter the Vehicle Identification Number: ");
-    danielGolf.setVIN(scanner.nextInt());
+    vehicle.setVIN(scanner.nextInt());
 
     System.out.print("Enter the Odometer reading: ");
-    danielGolf.setOdometer(scanner.nextDouble());
+    vehicle.setOdometer(scanner.nextDouble());
 
-    System.out.print("Enter gallons of gase used: ");
-    danielGolf.setConsumption(scanner.nextDouble());
+    System.out.print("Enter gallons of gas used: ");
+    vehicle.setConsumption(scanner.nextDouble());
 
     System.out.print("Enter miles since last oil change: ");
-    danielGolf.setTripMeter(scanner.nextDouble());
+    vehicle.setTripMeter(scanner.nextDouble());
 
     System.out.print("Enter engine displacement: ");
-    danielGolf.setDisplacement(scanner.nextDouble());
+    vehicle.setDisplacement(scanner.nextDouble());
 
-    TelematicsService.report(danielGolf);
+    TelematicsService.report(vehicle);
 
-    ObjectMapper mapper = new ObjectMapper();
+    TelematicsService.renderAverage("src");
+    TelematicsService.renderEachVehicle("src");
 
-
-    try {
-
-      String json = mapper.writeValueAsString(danielGolf);
-      System.out.println(json);
-
-    } catch (JsonProcessingException ex) {
-
-      ex.printStackTrace();
-
+    System.out.println("Would you like to enter another vehicle? ");
+    System.out.print("y or n: ");
+    if (scanner.next().equals("y")) {
+      main(args);
     }
   }
 }
