@@ -4,7 +4,7 @@ import java.io.Serializable;
  * Created by daxxon on 9/13/17.
  */
 public class VehicleInfo implements Serializable {
-  private int VIN;
+  private String VIN;
   private double odometer;
   private double consumption;
   private double tripMeter;
@@ -13,11 +13,11 @@ public class VehicleInfo implements Serializable {
   public VehicleInfo () {
   }
 
-  public int getVIN () {
+  public String getVIN () {
     return this.VIN;
   }
 
-  public void setVIN(int VIN) {
+  public void setVIN(String VIN) {
     this.VIN = VIN;
   }
 

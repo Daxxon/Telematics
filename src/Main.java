@@ -20,7 +20,7 @@ public class Main {
     VehicleInfo vehicle = new VehicleInfo();
 
     System.out.print("Enter the Vehicle Identification Number: ");
-    vehicle.setVIN(scanner.nextInt());
+    vehicle.setVIN(scanner.next());
 
     System.out.print("Enter the Odometer reading: ");
     vehicle.setOdometer(scanner.nextDouble());
